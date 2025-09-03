@@ -17,9 +17,16 @@ def extract_from_docx(file_bytes):
 
 def handler(request):
     try:
-        # Vercel envia o body cru
-        body = request.body
+        # Se não veio nada no body, retorna mensagem simples
+        if not request.body:
+            return {
+                "statusCode": 200,
+                "body": json.dumps({"message": "API ativa! Envie um arquivo PDF ou DOCX via POST."})
+            }
+
+        # Nome do arquivo (header obrigatório quando enviar)
         filename = request.headers.get("x-filename", "cv.pdf")
+        body = request.body
 
         if filename.endswith(".pdf"):
             text = extract_from_pdf(body)
