@@ -3,6 +3,5 @@ import json
 def handler(request):
     return {
         "statusCode": 200,
-        "body": json.dumps({"ok": True, "msg": "API na Vercel funcionando 🚀"})
+        "body": json.dumps({"hello": "world"})
     }
-
