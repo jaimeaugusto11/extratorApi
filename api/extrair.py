@@ -6,7 +6,7 @@ app = FastAPI()
 
 @app.get("/")
 def home():
-    return {"msg": "API Python rodando no Vercel via Docker 🚀"}
+    return {"msg": "API Python rodando no Render 🚀"}
 
 @app.post("/extract")
 async def extract(file: UploadFile = File(...)):
